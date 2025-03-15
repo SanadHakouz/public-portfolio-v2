@@ -58,17 +58,17 @@
                 <!-- Social Icons -->
                 <ul class="flex items-center space-x-4">
                     <li>
-                        <a href="https://www.linkedin.com/in/sanad-hakooz-76500b328/" target="_blank" class="text-white hover:text-gray-200 hover:scale-110 transition-all duration-300">
+                        <a href="https://www.linkedin.com" target="_blank" class="text-white hover:text-gray-200 hover:scale-110 transition-all duration-300">
                             <i class="fab fa-linkedin text-xl"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/SanadHakouz" target="_blank" class="text-white hover:text-gray-200 hover:scale-110 transition-all duration-300">
+                        <a href="https://github.com" target="_blank" class="text-white hover:text-gray-200 hover:scale-110 transition-all duration-300">
                             <i class="fab fa-github text-xl"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com/hakoosan" target="_blank" class="text-white hover:text-gray-200 hover:scale-110 transition-all duration-300">
+                        <a href="https://www.instagram.com" target="_blank" class="text-white hover:text-gray-200 hover:scale-110 transition-all duration-300">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
                     </li>
@@ -99,13 +99,13 @@
         </div>
         <div class="px-5 py-3 border-t border-blue-700 dark:border-gray-700">
             <div class="flex space-x-6">
-                <a href="https://www.linkedin.com/in/sanad-hakooz-76500b328/" target="_blank" class="text-white">
+                <a href="https://www.linkedin.com" target="_blank" class="text-white">
                     <i class="fab fa-linkedin text-xl"></i>
                 </a>
-                <a href="https://github.com/SanadHakouz" target="_blank" class="text-white">
+                <a href="https://github.com" target="_blank" class="text-white">
                     <i class="fab fa-github text-xl"></i>
                 </a>
-                <a href="https://www.instagram.com/hakoosan" target="_blank" class="text-white">
+                <a href="https://www.instagram.com" target="_blank" class="text-white">
                     <i class="fab fa-instagram text-xl"></i>
                 </a>
             </div>

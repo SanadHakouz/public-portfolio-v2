@@ -6,20 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-    Schema::table('about_mes', function (Blueprint $table) {
-        $table->date('last_updated_at')->nullable();
-    });
+        // Column already exists in the create table migration
+        // Intentionally left empty to avoid duplicate column error
     }
 
-public function down(): void
+    public function down(): void
     {
-    Schema::table('about_mes', function (Blueprint $table) {
-        $table->dropColumn('last_updated_at');
-    });
+        // No action needed
     }
-    };
+};

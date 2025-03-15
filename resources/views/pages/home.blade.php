@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-    'title' => 'Homepage | Hakousan',
+    'title' => 'Homepage ',
     'description' => 'Personal portfolio website showcasing web development projects using Laravel, PHP, and modern frontend technologies..',
     'keywords' => 'home page',
     'ogImage' => asset('images/home-og.jpg')

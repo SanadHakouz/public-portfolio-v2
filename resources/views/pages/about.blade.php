@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-    'title' => 'About me | Hakousan ',
+    'title' => 'About me  ',
     'description' => 'My CV , profile description , certificatoins , courses & technology knowledge.',
     'keywords' => 'Aboutme , techstack , certificates and courses , languages , cv.',
     'ogImage' => asset('images/home-og.jpg')

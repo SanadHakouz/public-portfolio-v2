@@ -57,12 +57,12 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Admin authentication routes with 2FA
-Route::get('/admin-area-51-access', [AdminController::class, 'showLoginForm'])->name('admin.login');
+Route::get('/secret', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/login', [AdminController::class, 'login'])->name('login');
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 
 // Admin routes protected by auth, admin, and two-factor middleware
-Route::prefix('adminox')->name('admin.')->middleware(['auth', 'admin', 'two-factor'])->group(function () {
+Route::prefix('admintest')->name('admin.')->middleware(['auth', 'admin', 'two-factor'])->group(function () {
     // Dashboard
     Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
 

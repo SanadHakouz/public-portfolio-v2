@@ -23,9 +23,9 @@
             <div class="footer-column">
                 <h5 class="font-bold mb-4 text-lg">Personal Information</h5>
                 <ul class="space-y-3">
-                    <li>📍 Based in Doha, Qatar</li>
-                    <li>📞 +974 7058 8420</li>
-                    <li>✉️ sanadhakouz@ymail.com</li>
+                    <li>📍 Based in XXX</li>
+                    <li>📞 +XXX XXXX XXXX</li>
+                    <li>✉️ test@test.com</li>
                 </ul>
             </div>
         </div>

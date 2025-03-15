@@ -11,7 +11,7 @@
     <!-- Dynamic meta tags -->
     <meta name="description" content="{{ $description ?? 'Personal portfolio website showcasing web development projects using Laravel, PHP, and modern frontend technologies.' }}">
     <meta name="keywords" content="{{ $keywords ?? 'web development, Laravel, PHP, portfolio, projects, full-stack developer' }}">
-    <meta name="author" content="Sanad Hakooz">
+    <meta name="author" content="test">
 
     <!-- Open Graph meta tags for better social media sharing -->
     <meta property="og:title" content="{{ $title ?? config('app.name', 'Laravel') }}">

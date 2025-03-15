@@ -10,11 +10,11 @@ class AboutMeSeeder extends Seeder
     public function run(): void
     {
         AboutMe::create([
-            'name' => 'Sanad Hakooz',
-            'location' => 'Doha, Qatar',
+            'name' => 'PEPE',
+            'location' => 'XXX, XXX',
             'profile_image' => 'images/profile.jpg',
             'job_title' => 'Junior Laravel Developer & Cybersecurity Technician',
-            'bio' => "My name is Sanad Hakooz, a Jordanian residing in Doha, Qatar. I hold a bachelor's degree in Computer Science from German Jordanian University.\n\nI am a junior Laravel developer with experience in building web applications using Laravel, Breeze, and Livewire, as well as developing RESTful APIs.\n\nAdditionally, I am (almost) a certified cybersecurity technician.\n\n(P.S. If you use JavaScript, we can't be friends. 😜)",
+            'bio' => "xxxxxxxxxxxxxxxxxx",
             'resume_file' => null, // Changed from resume_link
             'certificates' => [
                 [

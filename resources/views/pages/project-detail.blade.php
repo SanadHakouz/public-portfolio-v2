@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-    'title' => 'Projects| Hakousan',
+    'title' => 'Projects',
     'description' => 'Projects Showcase.',
     'keywords' => 'Projects',
     'ogImage' => asset('images/home-og.jpg')

@@ -8,19 +8,12 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('about_mes', function (Blueprint $table) {
-            $table->string('resume_file')->nullable()->after('bio');
-            // If you had a 'resume_link' column and want to remove it, uncomment this:
-            // $table->dropColumn('resume_link');
-        });
+        // Column already exists in the create table migration
+        // Intentionally left empty to avoid duplicate column error
     }
 
     public function down(): void
     {
-        Schema::table('about_mes', function (Blueprint $table) {
-            $table->dropColumn('resume_file');
-            // If you're removing 'resume_link', add this to the down method:
-            // $table->string('resume_link')->nullable()->after('bio');
-        });
+        // No action needed
     }
 };
