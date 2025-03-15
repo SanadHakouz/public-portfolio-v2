@@ -1,0 +1,154 @@
+/* postcss-ignore */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global fixes for overflow and responsive layout */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 0; /* The pt-16 Tailwind class handles this */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+}
+
+main {
+    flex: 1;
+}
+
+/* Make sure page headers start below the navbar */
+.page-header {
+    margin-top: 0;
+}
+
+/* Text outline/border effect - updated for better mobile legibility */
+.text-shadow-white {
+    text-shadow:
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+    -webkit-text-stroke: 0.5px white;
+}
+
+/* Responsive text shadow for smaller screens */
+@media (max-width: 480px) {
+    .text-shadow-white {
+        text-shadow:
+            -0.5px -0.5px 0 #fff,
+            0.5px -0.5px 0 #fff,
+            -0.5px 0.5px 0 #fff,
+            0.5px 0.5px 0 #fff;
+        -webkit-text-stroke: 0.25px white;
+    }
+}
+
+/* Fix for mobile navbar button */
+nav {
+    position: relative;
+    z-index: 50 !important; /* Higher z-index to ensure it stays above other elements */
+}
+
+/* Ensure the header image stays below the navbar */
+.bg-cover,
+div[style*="background-image"] {
+    z-index: 10; /* Lower than the navbar */
+    position: relative;
+}
+
+/* If you're using a hamburger menu icon, ensure it's visible */
+.hamburger-icon,
+button[aria-label="Toggle navigation"] {
+    z-index: 51 !important;
+    position: relative !important;
+    color: white !important; /* Ensure visibility against any background */
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Semi-transparent background */
+    border-radius: 4px;
+    padding: 6px !important;
+}
+
+/* Mobile menu overlay should also have high z-index */
+.mobile-menu,
+.navbar-collapse {
+    z-index: 49 !important;
+}
+
+/* Responsive breadcrumbs */
+nav[aria-label="breadcrumb"] ol {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+nav[aria-label="breadcrumb"] li {
+    display: flex;
+    align-items: center;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 480px) {
+    /* Mobile devices */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Adjust header area to be more compact on mobile */
+    .min-h-\[300px\] {
+        min-height: 200px !important;
+    }
+
+    .py-16 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* Handle breadcrumbs on small screens */
+    nav[aria-label="breadcrumb"] a {
+        font-size: 0.875rem !important;
+    }
+
+    nav[aria-label="breadcrumb"] span {
+        margin-left: 0.25rem !important;
+        margin-right: 0.25rem !important;
+        font-size: 0.875rem !important;
+    }
+}
+
+/* Small tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    nav[aria-label="breadcrumb"] a {
+        font-size: 1rem;
+    }
+
+    nav[aria-label="breadcrumb"] span {
+        font-size: 1.25rem;
+    }
+
+    .min-h-\[300px\] {
+        min-height: 250px !important;
+    }
+}
+
+/* Larger screens */
+@media (min-width: 769px) {
+    .container {
+        max-width: 95%;
+    }
+}

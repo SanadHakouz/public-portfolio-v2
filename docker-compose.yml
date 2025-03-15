@@ -1,0 +1,64 @@
+#version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - test-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: test-nginx
+    restart: unless-stopped
+    ports:
+      - "8090:80"
+      - "51734:5173" #vite dev server
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/:/etc/nginx/conf.d/
+    networks:
+      - test-network
+
+  db:
+    image: mysql:8.0
+    container_name: test-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - test-mysql:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - test-network
+
+  adminer:
+    image: adminer
+    container_name: test-adminer
+    restart: unless-stopped
+    ports:
+      - "8091:8080"
+    networks:
+      - test-network
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+
+networks:
+  test-network:
+    driver: bridge
+
+volumes:
+  test-mysql:
+    driver: local
