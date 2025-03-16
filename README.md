@@ -1,66 +1,135 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+here you can see the readme file with better structure :
+https://docs.google.com/document/d/1NGNhplM-PCSGJfbR6YL_YE8r2Vdse6dua8kaCY2VGEk/edit?usp=drive_link
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Step 1: Clone the Repository
+Copy
+#Clone the repository 
+Git clone https://github.com/SanadHakouz/public-portfolio-v2.git
 
-## About Laravel
+#Navigate to project directory 
+Cd public-portfolio-v2
+Step 2: Configure the Environment
+# Copy the example environment file
+cp .env.example .env
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Make sure the following settings are in your .env file:
+APP_URL=http://localhost:8090
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=test
+DB_USERNAME=test
+DB_PASSWORD=test
+Email Configuration Options
+The project uses email for two-factor authentication. Choose one of these configurations based on your preference:
+For Yahoo Mail:
+Copy
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mail.yahoo.com
+MAIL_PORT=587
+MAIL_USERNAME=your_yahoo_email@yahoo.com
+MAIL_PASSWORD=your_app_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="your_yahoo_email@yahoo.com"
+MAIL_FROM_NAME="${APP_NAME}"
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+For Gmail:
+Copy
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=your_gmail@gmail.com
+MAIL_PASSWORD=your_app_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="your_gmail@gmail.com"
+MAIL_FROM_NAME="${APP_NAME}"
+For Mailtrap (Development Testing):
+Copy
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_mailtrap_username
+MAIL_PASSWORD=your_mailtrap_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="test@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+Note: For Yahoo and Gmail, you'll need to generate an app password rather than using your regular password.
+Step 3: Build and Start Docker Containers
+# Build and start the Docker containers
+docker-compose up -d --build
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+This will create and start all the necessary containers:
+PHP/Laravel application
+Nginx web server
+MySQL database
+Adminer database management tool
+Step 4: Install Dependencies and Set Up the Application
+# Install PHP dependencies
+docker-compose exec app composer install
 
-## Learning Laravel
+# Set up Laravel key
+docker-compose exec app php artisan key:generate
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Run database migrations and seeders
+docker-compose exec app php artisan migrate:fresh --seed
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# Set proper permissions for storage directory
+docker-compose exec app chown -R www-data:www-data /var/www/storage
+docker-compose exec app chmod -R 775 /var/www/storage
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Create symbolic link for storage
+docker-compose exec app php artisan storage:link
+Step 5: Compile Frontend Assets
+# Install Node.js dependencies
+docker-compose exec app npm install
 
-## Laravel Sponsors
+# Build frontend assets
+docker-compose exec app npm run build
+Step 6: Clear Caches (Optional)
+# Clear all Laravel caches
+docker-compose exec app php artisan optimize:clear
+Step 7: Access the Application
+Main website: http://localhost:8090
+Database administration (Adminer): http://localhost:8091
+Server: db
+Username: test
+Password: test
+Database: test
+Step 8: Troubleshooting
+If you encounter any issues:
+Check container logs:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+docker-compose logs -f
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+For specific container logs:
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+docker-compose logs -f app
+docker-compose logs -f nginx
+docker-compose logs -f db
+Access the container shell:
+ docker-compose exec app bash
 
-## Security Vulnerabilities
+Restart containers:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+docker-compose down
+docker-compose up -d
+Development Workflow
+For ongoing development:
+Run Vite in development mode for real-time updates:
 
-## License
+docker-compose exec app npm run dev
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Make code changes in your local editor
+Run Laravel commands when needed:
+
+docker-compose exec app php artisan ...
+
+
+To stop the containers when you're done:
+
+docker-compose down
